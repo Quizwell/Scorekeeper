@@ -1,0 +1,304 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+
+    <meta charset="UTF-8">
+    <title>Scorekeeper</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+    <link rel="stylesheet" href="quizwellDefaultStyles.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="media-queries.css">
+
+    <meta name="description" content="Quickly and easily keep score of Bible quizzing matches.">
+    <meta name="keywords" content="Scorekeeper, Quizwell, quizzing, teen quizzing, Nazarene, Bible quizzing">
+
+    <meta name="apple-mobile-web-app-title" content="Scorekeeper">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://quizwell.github.io/Scorekeeper/apple-touch-icon.png?p=Scorekeeper">
+
+    <link rel="shortcut icon" href="https://quizwell.github.io/Scorekeeper/favicon.ico?p=Scorekeeper">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://quizwell.github.io/Scorekeeper/favicon-32x32.png?p=Scorekeeper">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://quizwell.github.io/Scorekeeper/favicon-16x16.png?p=Scorekeeper">
+    <link rel="manifest" href="https://quizwell.github.io/Scorekeeper/site.webmanifest?p=Scorekeeper">
+    <link rel="mask-icon" href="https://quizwell.github.io/Scorekeeper/safari-pinned-tab.svg?p=Scorekeeper" color="#5da6a5">
+    <meta name="msapplication-TileColor" content="#00aba9">
+    
+    <meta name="theme-color" content="#ffffff" media=(prefers-color-sceme: light)>
+    <meta name="theme-color" content="#000000" media=(prefers-color-sceme: dark)>
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5XH1JMYBR9"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-5XH1JMYBR9');
+    </script>
+
+</head>
+
+<body ontouchstart="">
+
+    <div class="mainScreen">
+
+        <div class="bannerNotification hidden">
+            <h1 class="title"></h1>
+            <p class="subtitle"></p>
+        </div>
+
+        <div class="welcomeScreen screen">
+
+            <div class="headerBlock">
+                <div class="background">
+                    <div class="gradient layer1"></div>
+                    <div class="gradient layer2"></div>
+                </div>
+                
+                <div class="content">
+                    <img alt="Scorekeeper Logo" src="images/logos/Logo.png" width="auto" height="100px"
+                        onclick="UIManager.welcomeScreen.easterEgg()">
+                </div>
+            </div>
+
+            <div class="textBlock">
+                <h1>Scorekeeper</h1>
+                <div class="quizwell">
+                    <p>by</p>
+                    <picture>
+                        <source srcset="images/logos/Quizwell-White.svg" media="(prefers-color-scheme: dark)">
+                        <img alt="Quizwell Logo" src="images/logos/Quizwell.svg" width="auto" height="40px">
+                    </picture>
+                </div>
+                <p class="easterEgg">#RegionalsNotFieldFinals</p>
+            </div>
+
+            <div class="buttonContainer">
+                <button class="start" onclick="UIManager.buttonHandlers.hideWelcomeScreen()">Get Started</button>
+                <button class="flyswatter" onclick="UIManager.buttonHandlers.showFlyswatterScreen()">
+                    <picture>
+                        <source srcset="images/icons/Flyswatter-White.svg" media="(prefers-color-scheme: dark)">
+                        <img alt="" src="images/icons/Flyswatter.svg" width="auto" height="35px">
+                    </picture>
+                    <p class="label">Report a Problem</p>
+                </button>
+                <button class="settings" onclick="UIManager.buttonHandlers.showSettingsScreen()">
+                    <picture>
+                        <source srcset="images/icons/Settings-White.svg" media="(prefers-color-scheme: dark)">
+                        <img alt="" src="images/icons/Settings.svg" width="auto" height="35px">
+                    </picture>
+                    <p class="label">Settings</p>
+                </button>
+            </div>
+
+        </div>
+
+        <div class="changelogScreen screen floating hidden">
+            <div class="header">
+                <img alt="Content Judge" src="images/logos/Logo.png" class="logo" width="auto" height="75px">
+                <h1 class="version"></h1>
+            </div>
+        
+            <div class="changes"></div>
+        
+            <button class="close" onclick="UIManager.buttonHandlers.hideChangelogScreen()">Close</button>
+        </div>
+        
+        <div class="flyswatterScreen screen floating hidden">
+            <div class="titleContainer" onclick="UIManager.buttonHandlers.closeFlyswatterScreen()">
+                <picture class="arrow left">
+                    <source srcset="images/icons/Arrow-White.svg" media="(prefers-color-scheme: dark)">
+                    <img alt="Back" src="images/icons/Arrow.svg" width="auto" height="30px" class="backArrow">
+                </picture>
+                <h1 class="title">Flyswatter</h1>
+            </div>
+        
+            <div class="optionsContainer">
+                <h2 class="title">What type of problem are you experiencing?</h2>
+                <div class="option"
+                    onclick="UIManager.flyswatterScreen.selectedOption('flyswatter.contentJudge.unexpectedBehavior')">Unexpected
+                    Behavior</div>
+                <div class="option" onclick="UIManager.flyswatterScreen.selectedOption('flyswatter.contentJudge.contentError')">
+                    Content Error</div>
+                <div class="option"
+                    onclick="UIManager.flyswatterScreen.selectedOption('flyswatter.contentJudge.featureSuggestion')">Feature
+                    Suggestion</div>
+            </div>
+        </div>
+
+        <div class="settingsScreen screen floating hidden">
+
+            <div class="titleContainer" onclick="UIManager.buttonHandlers.closeSettingsScreen()">
+                <picture class="arrow left">
+                    <source srcset="images/icons/Arrow-White.svg" media="(prefers-color-scheme: dark)">
+                    <img alt="Back" src="images/icons/Arrow.svg" width="auto" height="30px" class="backArrow">
+                </picture>
+                <h1 class="title">Settings</h1>
+            </div>
+
+            <div class="content">
+
+                <div class="section about">
+                    <p class="title">About</p>
+                    <p class="version"></p>
+                    <p class="build"></p>
+                </div>
+
+                <div class="section appAccentColor">
+                
+                    <p class="title">App Accent Color <span class="reset" onclick="UIManager.settingsScreen.resetButtonHandlers.resetAppAccentColor()">Reset to Default</span></p>
+                
+                    <p class="subsectionTitle">Light Mode</p>
+                    <div class="colorSelector">
+                        <input type="color" value="#7E73CE" class="picker" data-setting-name="appAccentColor">
+                    </div>
+                
+                    <p class="subsectionTitle">Dark Mode</p>
+                    <div class="colorSelector">
+                        <input type="color" value="#7E73CF" class="picker" data-setting-name="appAccentColorDark">
+                    </div>
+                
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="addWebClipScreen screen floating hidden">
+
+            <div class="header">
+
+                <img alt="Scorekeeper app icon" src="images/logos/Logo.png">
+                <p>Scorekeeper</p>
+
+            </div>
+
+            <h1>Add Scorekeeper to your Home Screen</h1>
+            <p>You can add Scorekeeper as an app on your Home Screen. Tap
+                <picture>
+                    <source srcset="images/icons/ShareIcon-White.svg" media="(prefers-color-scheme: dark)">
+                    <img alt="Sharrow" src="images/icons/ShareIcon.svg" height="25px" width="auto">
+                </picture>, then tap <span>Add to Home Screen</span>.
+            </p>
+
+            <button class="bottom" onclick="UIManager.buttonHandlers.hideAddWebClipScreen()">Get Started</button>
+
+        </div>
+
+        <div class="rulesetSelectionScreen screen hidden">
+
+            <div class="titleContainer" onclick="UIManager.buttonHandlers.closeRulesetSelectionScreen()">
+                <picture class="arrow left">
+                    <source srcset="images/icons/Arrow-White.svg" media="(prefers-color-scheme: dark)">
+                    <img alt="Back" src="images/icons/Arrow.svg" width="auto" height="30px" class="backArrow">
+                </picture>
+                <h1 class="title">Select a Ruleset</h1>
+            </div>
+
+
+            <div class="pinnedRulesetsContainer">
+
+                <p class="label">Pinned</p>
+
+                <div class="pinnedRuleset">
+                    <div class="info">
+                        <h2 class="name">Competition</h2>
+                        <p class="denomination">Nazarene</p>
+                    </div>
+                    <picture class="arrow down">
+                        <source srcset="/images/icons/BackArrow-White.svg" media="(prefers-color-scheme: dark)">
+                        <img width="30px" height="auto" src="/images/icons/BackArrow.svg">
+                    </picture>
+                </div>
+                <div class="pinnedRuleset">
+                    <div class="info">
+                        <h2 class="name">Practice</h2>
+                        <p class="denomination">Nazarene</p>
+                    </div>
+                    <picture class="arrow down">
+                        <source srcset="/images/icons/BackArrow-White.svg" media="(prefers-color-scheme: dark)">
+                        <img width="30px" height="auto" src="/images/icons/BackArrow.svg">
+                    </picture>
+                </div>
+                <div class="pinnedRuleset">
+                    <div class="info">
+                        <h2 class="name">Bonus Team</h2>
+                        <p class="denomination">Nazarene</p>
+                    </div>
+                    <picture class="arrow down">
+                        <source srcset="/images/icons/BackArrow-White.svg" media="(prefers-color-scheme: dark)">
+                        <img width="30px" height="auto" src="/images/icons/BackArrow.svg">
+                    </picture>
+                </div>
+                <div class="pinnedRuleset">
+                    <div class="info">
+                        <h2 class="name">Battleship</h2>
+                        <p class="denomination">Nazarene</p>
+                    </div>
+                    <picture class="arrow down">
+                        <source srcset="/images/icons/BackArrow-White.svg" media="(prefers-color-scheme: dark)">
+                        <img width="30px" height="auto" src="/images/icons/BackArrow.svg">
+                    </picture>
+                </div>
+                <div class="pinnedRuleset">
+                    <div class="info">
+                        <h2 class="name">Relation Rivalry</h2>
+                        <p class="denomination">Nazarene</p>
+                    </div>
+                    <picture class="arrow down">
+                        <source srcset="/images/icons/BackArrow-White.svg" media="(prefers-color-scheme: dark)">
+                        <img width="30px" height="auto" src="/images/icons/BackArrow.svg">
+                    </picture>
+                </div>
+                <div class="pinnedRuleset">
+                    <div class="info">
+                        <h2 class="name">King of the Hill</h2>
+                        <p class="denomination">Nazarene</p>
+                    </div>
+                    <picture class="arrow down">
+                        <source srcset="/images/icons/BackArrow-White.svg" media="(prefers-color-scheme: dark)">
+                        <img width="30px" height="auto" src="/images/icons/BackArrow.svg">
+                    </picture>
+                </div>
+
+            </div>
+
+            <div class="rulesetList">
+
+                <p class="label">All Rulesets</p>
+
+            </div>
+
+        </div>
+        
+        <div class="rulesetConfigurationScreen screen floating hidden">
+            
+            <div class="titleContainer" onclick="UIManager.buttonHandlers.closeRulesetConfigurationScreen()">
+                <picture class="arrow left">
+                    <source srcset="images/icons/Arrow-White.svg" media="(prefers-color-scheme: dark)">
+                    <img alt="Back" src="images/icons/Arrow.svg" width="auto" height="30px" class="backArrow">
+                </picture>
+                <h1 class="title">Round Configuration</h1>
+            </div>
+            
+        </div>
+        
+        <div class="overlay"></div>
+
+    </div>
+
+    <script src="storageManager.js"></script>
+    <script src="UIManager.js"></script>
+    <script src="scoringEngine.js"></script>
+    
+    <script src="rulesets/nazareneCompetition.js"></script>
+
+    <script src="flyswatter.js"></script>
+
+    <script src="onload.js"></script>
+
+</body>
+
+</html>

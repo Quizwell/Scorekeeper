@@ -1,0 +1,7 @@
+var scoringEngine = {
+    
+    rulesets: [],
+    
+    currentRound: {}
+    
+}
