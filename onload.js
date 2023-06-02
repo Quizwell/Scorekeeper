@@ -2,9 +2,8 @@
 
 //Populate ruleset selection screen
 for (var i = 0; i < scoringEngine.rulesets.length; i++) {
-
     var currentRuleset = scoringEngine.rulesets[i];
-
+    
     var rulesetContainer = document.createElement("div");
     rulesetContainer.classList.add("ruleset");
     (function (id) {
@@ -15,7 +14,7 @@ for (var i = 0; i < scoringEngine.rulesets.length; i++) {
 
     var rulesetInfoContainer = document.createElement("div");
     rulesetInfoContainer.classList.add("info");
-
+    
     var rulesetNameText = document.createElement("p");
     rulesetNameText.classList.add("name");
     rulesetNameText.textContent = currentRuleset.info.name;
@@ -23,7 +22,6 @@ for (var i = 0; i < scoringEngine.rulesets.length; i++) {
     var rulesetDenominationText = document.createElement("p");
     rulesetDenominationText.classList.add("denomination");
     rulesetDenominationText.textContent = currentRuleset.info.denominationName;
-
     rulesetInfoContainer.appendChild(rulesetNameText);
     rulesetInfoContainer.appendChild(rulesetDenominationText);
 
@@ -47,7 +45,6 @@ for (var i = 0; i < scoringEngine.rulesets.length; i++) {
     rulesetContainer.appendChild(pictureElement);
 
     UIReferences.rulesetSelectionScreenRulesetList.appendChild(rulesetContainer);
-
 }
 
 //VERSION AND UPDATE HANDLING
@@ -57,7 +54,7 @@ if (
     (storageManager.get("lastUsedVersion") != SCOREKEEPER_VERSION)
 ) {
     //This code runs if the current version of Content Judge is newer than the last used version
-    UIReferences.changelogScreenVersion.textContent = "Version " + CONTENT_JUDGE_VERSION;
+    UIReferences.changelogScreenVersion.textContent = "Version " + SCOREKEEPER_VERSION;
     for (var i = 0; i < SCOREKEEPER_CHANGELOG.length; i++) {
         var currentSection = SCOREKEEPER_CHANGELOG[i];
         if (currentSection.items.length > 0) {

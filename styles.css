@@ -1,495 +1,440 @@
 .welcomeScreen {
-    
-    padding: 0;
-    
+  padding: 0;
 }
 
 .welcomeScreen .headerBlock {
-    
-    width: 100%;
-    height: 40%;
-    position: relative;
-    background: linear-gradient(70deg, #74BCBD 0%, #436F9E 20%, #836AC8 40%, #7D76D1 60%, #D88243 80%, #CF4F3D 100%);
-    background-size: 200% 100%;
-    animation: gradient 18s ease infinite;    
+  width: 100%;
+  height: 40%;
+  position: relative;
 }
 
-@keyframes gradient {
-    0% { background-position: 0% 50% }
-    50% { background-position: 100% 50% }
-    100% { background-position: 0% 50% }
+.welcomeScreen .headerBlock .background .gradient {
+  width: 100%;
+  height: 100%;
 }
 
-.welcomeScreen .headerBlock img {
-    
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    transition: opacity 1.5s ease;
-    
-    border-radius: 20px;
-    box-shadow: 0 0 10px var(--dark-shadow-color);
-    
+.welcomeScreen .headerBlock .background .gradient.layer1 {
+  background: linear-gradient(110deg, #36b3ba, #8b6bcd);
+  position: absolute;
+  opacity: 0.6;
+  z-index: 1;
 }
 
-.welcomeScreen .headerBlock .easterEggText {
-    
-    position: absolute;
-    top: 50%;
-    width: 200px;
-    text-align: center;
-    transform: translate(-50%, -50%);
-    font-size: 25px;
-    font-weight: bold;
-    color: var(--accent-color-text-color);
-    opacity: 0;
-        
+.welcomeScreen .headerBlock .background .gradient.layer2 {
+  background: linear-gradient(30deg, #ef6a39, #1d7ca5);
+  position: absolute;
+  mix-blend-mode: hard-light;
+  filter: saturate(1.2);
+  z-index: 2;
 }
 
-.welcomeScreen .headerBlock.easterEgg .easterEggText {
-
-    animation: floatAcross 10s linear;
-    
+.welcomeScreen .headerBlock .content {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  z-index: 3;
 }
 
-.welcomeScreen .headerBlock.easterEgg img {
+.welcomeScreen .headerBlock .content img {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  transition: opacity 1.5s ease;
 
-    opacity: 0;
-    
-}
-
-@keyframes floatAcross {
-    0% {
-        left: 120%;
-        opacity: 0;
-    }
-    25% {
-        opacity: 1;
-    }
-    75% {
-        opacity: 1;
-    }
-    100% {
-        left: -20%;
-        opacity: 0;
-    }
+  border-radius: 20px;
+  box-shadow: 0 0 10px var(--dark-shadow-color);
 }
 
 .welcomeScreen .textBlock {
-
-    margin-top: 20px;
-    font-size: 30px;
-    text-align: center;
-    
+  margin-top: 20px;
+  font-size: 30px;
+  text-align: center;
 }
 
-.welcomeScreen .textBlock p {
-
-    display: inline-block;
-    font-size: 25px;
-    margin-right: 5px;
-    
+.welcomeScreen .textBlock .quizwell {
+  transition: opacity 2s ease;
 }
 
-.welcomeScreen .textBlock img {
+.welcomeScreen.showEasterEgg .textBlock .quizwell {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 1s ease;
+}
 
-    display: inline-block;
-    vertical-align: middle;
-    
+.welcomeScreen .textBlock .quizwell p {
+  display: inline-block;
+  font-size: 25px;
+  margin-right: 5px;
+}
+
+.welcomeScreen .textBlock .quizwell img {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.welcomeScreen .textBlock .easterEgg {
+  opacity: 0;
+  pointer-events: none;
+  position: relative;
+  bottom: 40px;
+  transform: translate(0, 20px);
+  transition: opacity 1s ease, transform 1.5s ease;
+}
+
+.welcomeScreen.showEasterEgg .textBlock .easterEgg {
+  opacity: 1;
+  transform: none;
+  pointer-events: auto;
 }
 
 .welcomeScreen .buttonContainer {
-    
-    position: absolute;
-    bottom: 20px;
-    bottom: calc(env(safe-area-inset-bottom) + 20px);
-    left: 50%;
-    transform: translate(-50%, 0);
-    width: calc(100% - 40px);
-    max-width: 500px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 52px 52px;
-    grid-gap: 15px;
-    overflow: hidden;
-    
+  position: absolute;
+  bottom: 20px;
+  bottom: calc(env(safe-area-inset-bottom) + 20px);
+  left: 50%;
+  transform: translate(-50%, 0);
+  width: calc(100% - 40px);
+  max-width: 500px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 52px 52px;
+  gap: 15px;
+  overflow: hidden;
 }
 
 .welcomeScreen .buttonContainer button {
-
-    min-width: 0;
-    overflow: hidden;
-    padding: 0;
-    
+  min-width: 0;
+  overflow: hidden;
+  padding: 0;
 }
 
 .welcomeScreen .buttonContainer button.start {
-
-    font-size: 20px;
-    grid-column: 1 / 3;
-    
+  font-size: 20px;
+  grid-column: 1 / 3;
 }
 
 .welcomeScreen .buttonContainer button:not(.start) {
-
-    background: var(--content-background-color);
-    color: var(--primary-text-color);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    
+  background: var(--content-background-color);
+  color: var(--primary-text-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .welcomeScreen .buttonContainer button:not(.start) img {
-
-    display: inline-block;
-    vertical-align: middle;
-    margin-right: 10px;
-    
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 10px;
 }
 
 .welcomeScreen .buttonContainer button:not(.start) p.label {
-
-    display: inline-block;
-    font-size: 16px;
-    margin: 0;
-    
+  display: inline-block;
+  font-size: 16px;
+  margin: 0;
 }
 
-.flyswatterScreen .question {
-    
-    width: 100%;
-    max-width: 500px;
-    margin: auto;
-    
+.changelogScreen .header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 25px;
 }
 
-.flyswatterScreen .question .option {
-    
-    background: var(--content-background-color);
-    padding: 10px;
-    margin-bottom: 10px;
-    border-radius: 10px;
-    cursor: pointer;
-    
-    transition: opacity 0.1s ease;
-    
+.changelogScreen .header img {
+  border-radius: 18px;
+  box-shadow: 0 0 10px var(--dark-shadow-color);
 }
 
-.flyswatterScreen .question .option:active {
+.changelogScreen .header h1 {
+  margin: 0 0 0 20px;
+}
 
-    opacity: 0.5;
-    
+.changelogScreen .changes {
+  width: calc(100% - 40px);
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.changelogScreen .changes p::before {
+  content: "• ";
+}
+
+.changelogScreen button {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 40px);
+  max-width: 200px;
+}
+
+.flyswatterScreen .optionsContainer {
+  background: var(--page-background-color);
+  position: absolute;
+  left: 50%;
+  top: 80px;
+  width: 100%;
+  max-width: 500px;
+  height: calc(100% - 80px);
+  transform: translateX(-50%);
+  transition: all 0.3s ease;
+}
+
+.flyswatterScreen .optionsContainer.hidden {
+  display: block !important;
+  opacity: 0;
+  transform: translateX(calc(-50% + 50px));
+  pointer-events: none;
+}
+
+.flyswatterScreen .optionsContainer .option {
+  background: var(--content-background-color);
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+
+  transition: opacity 0.1s ease;
+}
+
+.flyswatterScreen .optionsContainer .option:active {
+  opacity: 0.5;
 }
 
 .settingsScreen .section {
-    
-    background: var(--content-background-color);
-    padding: 15px;
-    border-radius: 15px;
-    max-width: 750px;
-    margin: auto;
-    margin-bottom: 20px;
-    
+  background: var(--content-background-color);
+  padding: 15px;
+  border-radius: 15px;
+  max-width: 750px;
+  margin: auto;
+  margin-bottom: 20px;
 }
 
 .settingsScreen .section .title {
-    
-    font-size: 20px;
-    font-weight: bold;
-    
+  font-size: 20px;
+  font-weight: bold;
 }
 
 .settingsScreen .section .title .reset {
+  color: var(--secondary-text-color);
+  font-size: 16px;
+  margin-left: 5px;
+  cursor: pointer;
 
-    color: var(--secondary-text-color);
-    font-size: 16px;
-    margin-left: 5px;
-    cursor: pointer;
-    
-    transition: opacity 0.1s ease;
-    
+  transition: opacity 0.1s ease;
 }
 
 .settingsScreen .section .title .reset:active {
-
-    opacity: 0.5;
-    
+  opacity: 0.5;
 }
 
-.settingsScreen .section > .label:not(:last-child){
-    
-    margin: 10px 0 15px 0;
-    
+.settingsScreen .section > .label:not(:last-child) {
+  margin: 10px 0 15px 0;
 }
 
 .settingsScreen .section > .label,
 .settingsScreen .section .subsectionTitle {
-    
-    margin: 10px 0 5px 0;
-    
+  margin: 10px 0 5px 0;
 }
 
 .settingsScreen .section .subsectionTitle {
-    
-    font-weight: bold;
-    
+  font-weight: bold;
 }
 
 .settingsScreen .toggle {
-    
-    margin-bottom: 10px;
-    display: flex;
-    align-items: center;
-    
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
 }
 
 .settingsScreen .toggle .checkbox {
-    
-    width: 25px;
-    height: 25px;
-    border-radius: 8px;
-    margin-right: 10px;
-    background: var(--page-background-color);
-    cursor: pointer;
-    
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    
-    transition: background 0.1s ease;
-    
+  width: 25px;
+  height: 25px;
+  border-radius: 8px;
+  margin-right: 10px;
+  background: var(--page-background-color);
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transition: background 0.1s ease;
 }
 
 .settingsScreen .toggle .checkbox.checked {
-
-    background: var(--app-accent-color);
-    
+  background: var(--app-accent-color);
 }
 
 .settingsScreen .toggle .checkbox .check {
+  opacity: 0;
+  width: 10px;
+  height: 10px;
+  border-radius: 3px;
+  background: var(--accent-color-text-color);
 
-    opacity: 0;
-    width: 10px;
-    height: 10px;
-    border-radius: 3px;
-    background: var(--accent-color-text-color);
-    
-    transition: opacity 0.1s ease;
-    
+  transition: opacity 0.1s ease;
 }
 
 .settingsScreen .toggle .checkbox.checked .check {
-
-    opacity: 0.9;
-    
+  opacity: 0.9;
 }
 
 .settingsScreen .toggle .label {
-    
-    margin: 0;
-    font-weight: bold;
-    
+  margin: 0;
+  font-weight: bold;
 }
 
 .settingsScreen .colorSelector .picker {
-
-    display: flex;
-    align-items: center;
-    vertical-align: center;
-    
+  display: flex;
+  align-items: center;
+  vertical-align: center;
 }
 
 .settingsScreen .colorSelector .picker {
-    
-    display: inline-block;
-    
+  display: inline-block;
 }
 
 .settingsScreen .colorSelector .label {
-
-    display: inline-block;
-    margin-bottom: 3px;
-    
+  display: inline-block;
+  margin-bottom: 3px;
 }
 
 .settingsScreen .section > p:last-child {
-    
-    margin-bottom: 0;
-    
+  margin-bottom: 0;
 }
 
 .addWebClipScreen {
-    
-    padding: 0;
-    
+  padding: 0;
 }
 
 .addWebClipScreen div.header {
-
-    width: 100vw;
-    height: 40%;
-    background-color: var(--content-background-color);
-
+  width: 100vw;
+  height: 40%;
+  background-color: var(--content-background-color);
 }
 
 .addWebClipScreen div.header img {
-
-    position: absolute;
-    top: 20%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 75px;
-    height: 75px;
-    border-radius: 15px;
-
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 75px;
+  height: 75px;
+  border-radius: 15px;
 }
 
 .addWebClipScreen div.header p {
-
-    position: absolute;
-    top: calc(20% + 42px);
-    left: 50%;
-    transform: translate(-50%, 0);
-    font-size: 15px;
-    font-family: system-ui;
-    font-weight: normal;
-
+  position: absolute;
+  top: calc(20% + 42px);
+  left: 50%;
+  transform: translate(-50%, 0);
+  font-size: 15px;
+  font-family: system-ui;
+  font-weight: normal;
 }
 
 .addWebClipScreen h1 {
-    
-    margin: 20px 15px 5px 15px;
-    
+  margin: 20px 15px 5px 15px;
 }
 
 .addWebClipScreen > p {
-    
-    line-height: 150%;
-    margin: 0 15px 0 15px;
-    
+  line-height: 150%;
+  margin: 0 15px 0 15px;
 }
 
 .addWebClipScreen p img {
-    
-    background: var(--content-background-color);
-    padding: 5px;
-    box-sizing: border-box;
-    border-radius: 5px;
-    vertical-align: middle;
-    
+  background: var(--content-background-color);
+  padding: 5px;
+  box-sizing: border-box;
+  border-radius: 5px;
+  vertical-align: middle;
 }
 
 .addWebClipScreen p span {
-    
-    background: var(--content-background-color);
-    font-family: system-ui;
-    padding: 2.5px;
-    border-radius: 5px;
-    
+  background: var(--content-background-color);
+  font-family: system-ui;
+  padding: 2.5px;
+  border-radius: 5px;
 }
 
 .rulesetSelectionScreen .pinnedRulesetsContainer {
-
-    background: var(--content-background-color);
-    border-radius: 20px;
-    padding: 15px;
-    display: grid;
-    grid-template-columns: auto auto auto;
-    grid-template-rows: 15px repeat(2, 100px);
-    gap: 20px;
-    
+  background: var(--content-background-color);
+  border-radius: 20px;
+  padding: 15px;
+  display: grid;
+  grid-template-columns: auto auto auto;
+  grid-template-rows: 15px repeat(2, 100px);
+  gap: 20px;
 }
 
 .rulesetSelectionScreen .pinnedRulesetsContainer .label {
-    
-    font-weight: bold;
-    grid-column: 1/4;
-    font-size: 22px;
-    
+  font-weight: bold;
+  grid-column: 1/4;
+  font-size: 22px;
 }
 
 .rulesetSelectionScreen .pinnedRulesetsContainer .pinnedRuleset {
-    
-    background: var(--page-background-color);
-    border-radius: 12px;
-    cursor: pointer;
-    padding: 0 10px;
-    
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    
+  background: var(--page-background-color);
+  border-radius: 12px;
+  cursor: pointer;
+  padding: 0 10px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .rulesetSelectionScreen .pinnedRulesetsContainer .pinnedRuleset .info .name {
-
-    margin: 0 0 5px 0;
-    
+  margin: 0 0 5px 0;
 }
 
-.rulesetSelectionScreen .pinnedRulesetsContainer .pinnedRuleset .info .denomination {
-
-    font-weight: bold;
-    font-size: 18px;
-    margin: 0;
-    
+.rulesetSelectionScreen
+  .pinnedRulesetsContainer
+  .pinnedRuleset
+  .info
+  .denomination {
+  font-weight: bold;
+  font-size: 18px;
+  margin: 0;
 }
 
 .rulesetSelectionScreen .rulesetList {
-    
-    background: var(--content-background-color);
-    margin-top: 20px;
-    border-radius: 20px;
-    padding: 15px;
-    
+  background: var(--content-background-color);
+  margin-top: 20px;
+  border-radius: 20px;
+  padding: 15px;
 }
 
 .rulesetSelectionScreen .rulesetList .label {
-
-    font-weight: bold;
-    font-size: 22px;
-    
+  font-weight: bold;
+  font-size: 22px;
 }
 
 .rulesetSelectionScreen .rulesetList .ruleset {
-
-    background: var(--page-background-color);
-    border-radius: 12px;
-    padding: 10px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    
+  background: var(--page-background-color);
+  border-radius: 12px;
+  padding: 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .rulesetSelectionScreen .rulesetList .ruleset:not(:last-child) {
-    
-    margin-bottom: 10px;
-    
-    
+  margin-bottom: 10px;
 }
 
 .rulesetSelectionScreen .rulesetList .ruleset .info p {
-
-    margin: 0;
-    
+  margin: 0;
 }
 
 .rulesetSelectionScreen .rulesetList .ruleset .info p.name {
-
-    font-weight: bold;
-    font-size: 18px;
-
+  font-weight: bold;
+  font-size: 18px;
 }
 
 .rulesetSelectionScreen .rulesetList .ruleset picture {
-
-    height: 25px;
-    
+  height: 25px;
 }
-
-
-
